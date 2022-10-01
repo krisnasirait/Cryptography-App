@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigationCaesar"
-        android:title="Caesar"/>
+        android:title="Caesar"
+        android:icon="@mipmap/ic_logo_foreground"/>
     <item
         android:id="@+id/navigationVignere"
+        android:icon="@mipmap/ic_vignere_foreground"
         android:title="Vignere"/>
     <item
         android:id="@+id/navigationRailFence"
+        android:icon="@mipmap/ic_rail_foreground"
         android:title="Rail Fence"/>
     <item
         android:id="@+id/navigationSuperAlgo"
+        android:icon="@mipmap/ic_super_foreground"
         android:title="Super"/>
 </menu>
