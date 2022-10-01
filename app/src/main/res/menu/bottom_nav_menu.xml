@@ -7,9 +7,9 @@
         android:id="@+id/navigationVignere"
         android:title="Vignere"/>
     <item
-        android:id="@+id/navigationAlgo3"
-        android:title="Algorithm3"/>
+        android:id="@+id/navigationRailFence"
+        android:title="Rail Fence"/>
     <item
         android:id="@+id/navigationSuperAlgo"
-        android:title="SuperAlgorithm"/>
+        android:title="Super"/>
 </menu>

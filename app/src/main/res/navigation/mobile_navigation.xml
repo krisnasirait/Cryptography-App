@@ -15,13 +15,13 @@
         android:label="Vignere"
         tools:layout="@layout/fragment_vignere_cipher" />
     <fragment
-        android:id="@+id/navigationAlgo3"
-        android:name="com.kingtech.cryptography.Algorithm3"
-        android:label="Algorithm3"
-        tools:layout="@layout/fragment_algorithm3" />
+        android:id="@+id/navigationRailFence"
+        android:name="com.kingtech.cryptography.RailFenceCipherFragment"
+        android:label="Rail Fence"
+        tools:layout="@layout/fragment_rail_fence_cipher" />
     <fragment
         android:id="@+id/navigationSuperAlgo"
         android:name="com.kingtech.cryptography.SuperAlgorithm"
-        android:label="SuperAlgorithm"
+        android:label="Super"
         tools:layout="@layout/fragment_super_algorithm" />
 </navigation>
