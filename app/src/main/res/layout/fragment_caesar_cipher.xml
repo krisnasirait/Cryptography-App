@@ -17,35 +17,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ilInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Input text"
-        app:layout_constraintTop_toBottomOf="@+id/titleCaesarCipher"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="10dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ilResult"
+   <EditText
+       android:id="@+id/etInput"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:hint="Input Plain Text"
+       android:inputType="text"
+       app:layout_constraintTop_toBottomOf="@id/titleCaesarCipher"/>
+
+    <EditText
+        android:id="@+id/etShiftKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cipher text"
-        app:layout_constraintTop_toBottomOf="@+id/ilInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="10dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:hint="Input key"
+        android:inputType="number"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/etInput"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etShiftKey"/>
 
     <Button
         android:id="@+id/btnEncrypt"
@@ -53,13 +49,13 @@
         android:layout_height="wrap_content"
         android:text="Encrypt"
         android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/ilResult"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvResult"/>
 
     <Button
         android:id="@+id/btnDecrypt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Encrypt"
+        android:text="Decrypt"
         android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@+id/btnEncrypt"/>
 
