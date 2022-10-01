@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigationAlgo1"
-        android:title="Algorithm1"/>
+        android:id="@+id/navigationCaesar"
+        android:title="Caesar"/>
     <item
         android:id="@+id/navigationAlgo2"
         android:title="Algorithm2"/>

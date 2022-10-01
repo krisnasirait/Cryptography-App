@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigationAlgo1">
-
+    app:startDestination="@id/navigationCaesar">
     <fragment
-        android:id="@+id/navigationAlgo1"
-        android:name="com.kingtech.cryptography.Algorithm1"
-        android:label="Algorithm1"
-        tools:layout="@layout/fragment_algorithm1" />
+        android:id="@+id/navigationCaesar"
+        android:name="com.kingtech.cryptography.CaesarCipherFragment"
+        android:label="Caesar"
+        tools:layout="@layout/fragment_caesar_cipher" />
     <fragment
         android:id="@+id/navigationAlgo2"
         android:name="com.kingtech.cryptography.Algorithm2"
@@ -25,5 +24,4 @@
         android:name="com.kingtech.cryptography.SuperAlgorithm"
         android:label="SuperAlgorithm"
         tools:layout="@layout/fragment_super_algorithm" />
-
 </navigation>
