@@ -3,27 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigationAlgo1">
-
+    app:startDestination="@id/navigationCaesar">
     <fragment
-        android:id="@+id/navigationAlgo1"
-        android:name="com.kingtech.cryptography.Algorithm1"
-        android:label="Algorithm1"
-        tools:layout="@layout/fragment_algorithm1" />
+        android:id="@+id/navigationCaesar"
+        android:name="com.kingtech.cryptography.CaesarCipherFragment"
+        android:label="Caesar"
+        tools:layout="@layout/fragment_caesar_cipher" />
     <fragment
-        android:id="@+id/navigationAlgo2"
-        android:name="com.kingtech.cryptography.Algorithm2"
-        android:label="Algorithm2"
-        tools:layout="@layout/fragment_algorithm2" />
+        android:id="@+id/navigationVignere"
+        android:name="com.kingtech.cryptography.VignereCipherFragment"
+        android:label="Vignere"
+        tools:layout="@layout/fragment_vignere_cipher" />
     <fragment
-        android:id="@+id/navigationAlgo3"
-        android:name="com.kingtech.cryptography.Algorithm3"
-        android:label="Algorithm3"
-        tools:layout="@layout/fragment_algorithm3" />
+        android:id="@+id/navigationRailFence"
+        android:name="com.kingtech.cryptography.RailFenceCipherFragment"
+        android:label="Rail Fence"
+        tools:layout="@layout/fragment_rail_fence_cipher" />
     <fragment
         android:id="@+id/navigationSuperAlgo"
         android:name="com.kingtech.cryptography.SuperAlgorithm"
-        android:label="SuperAlgorithm"
+        android:label="Super"
         tools:layout="@layout/fragment_super_algorithm" />
-
 </navigation>
