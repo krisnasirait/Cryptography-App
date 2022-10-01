@@ -10,10 +10,10 @@
         android:label="Caesar"
         tools:layout="@layout/fragment_caesar_cipher" />
     <fragment
-        android:id="@+id/navigationAlgo2"
-        android:name="com.kingtech.cryptography.Algorithm2"
-        android:label="Algorithm2"
-        tools:layout="@layout/fragment_algorithm2" />
+        android:id="@+id/navigationVignere"
+        android:name="com.kingtech.cryptography.VignereCipherFragment"
+        android:label="Vignere"
+        tools:layout="@layout/fragment_vignere_cipher" />
     <fragment
         android:id="@+id/navigationAlgo3"
         android:name="com.kingtech.cryptography.Algorithm3"

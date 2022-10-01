@@ -4,8 +4,8 @@
         android:id="@+id/navigationCaesar"
         android:title="Caesar"/>
     <item
-        android:id="@+id/navigationAlgo2"
-        android:title="Algorithm2"/>
+        android:id="@+id/navigationVignere"
+        android:title="Vignere"/>
     <item
         android:id="@+id/navigationAlgo3"
         android:title="Algorithm3"/>
