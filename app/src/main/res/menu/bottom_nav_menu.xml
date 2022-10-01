@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Algorithm1"/>
+    <item
+        android:title="Algorithm2"/>
+    <item
+        android:title="Algorithm3"/>
+    <item
+        android:title="Super Algorithm"/>
+</menu>
