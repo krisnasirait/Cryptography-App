@@ -3,6 +3,10 @@ package com.kingtech.cryptography
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kingtech.cryptography.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,5 +21,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val navView: BottomNavigationView = binding.bottomNavigationView
+
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        navView.setupWithNavController(navController)
+
     }
 }

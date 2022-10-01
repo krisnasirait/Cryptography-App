@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/algorithm1">
+
+    <fragment
+        android:id="@+id/algorithm1"
+        android:name="com.kingtech.cryptography.Algorithm1"
+        android:label="Algorithm1"
+        tools:layout="@layout/fragment_algorithm1" />
+</navigation>
