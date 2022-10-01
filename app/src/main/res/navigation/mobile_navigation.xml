@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/algorithm1">
+    app:startDestination="@id/navigationAlgo1">
 
     <fragment
-        android:id="@+id/algorithm1"
+        android:id="@+id/navigationAlgo1"
         android:name="com.kingtech.cryptography.Algorithm1"
         android:label="Algorithm1"
         tools:layout="@layout/fragment_algorithm1" />
     <fragment
-        android:id="@+id/algorithm2"
+        android:id="@+id/navigationAlgo2"
         android:name="com.kingtech.cryptography.Algorithm2"
-        android:label="fragment_algorithm2"
+        android:label="Algorithm2"
         tools:layout="@layout/fragment_algorithm2" />
     <fragment
-        android:id="@+id/algorithm3"
+        android:id="@+id/navigationAlgo3"
         android:name="com.kingtech.cryptography.Algorithm3"
-        android:label="fragment_algorithm3"
+        android:label="Algorithm3"
         tools:layout="@layout/fragment_algorithm3" />
     <fragment
-        android:id="@+id/superAlgorithm"
+        android:id="@+id/navigationSuperAlgo"
         android:name="com.kingtech.cryptography.SuperAlgorithm"
-        android:label="fragment_super_algorithm"
+        android:label="SuperAlgorithm"
         tools:layout="@layout/fragment_super_algorithm" />
 
 </navigation>
