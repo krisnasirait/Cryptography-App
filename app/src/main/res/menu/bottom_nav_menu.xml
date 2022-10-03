@@ -7,7 +7,7 @@
     <item
         android:id="@+id/hashFragment"
         android:icon="@mipmap/ic_vignere_foreground"
-        android:title="Hash"/>
+        android:title="AES"/>
     <item
         android:id="@+id/navigationRailFence"
         android:icon="@mipmap/ic_rail_foreground"
