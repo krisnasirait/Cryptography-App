@@ -11,9 +11,9 @@
         tools:layout="@layout/fragment_caesar_cipher" />
     <fragment
         android:id="@+id/navigationRailFence"
-        android:name="com.kingtech.cryptography.fragment.RailFenceCipherFragment"
-        android:label="Rail Fence"
-        tools:layout="@layout/fragment_rail_fence_cipher" />
+        android:name="com.kingtech.cryptography.fragment.RsaFragment"
+        android:label="RSA"
+        tools:layout="@layout/fragment_rsa" />
     <fragment
         android:id="@+id/navigationSuperAlgo"
         android:name="com.kingtech.cryptography.SuperAlgorithm"

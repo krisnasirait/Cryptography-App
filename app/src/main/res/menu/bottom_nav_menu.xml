@@ -11,7 +11,7 @@
     <item
         android:id="@+id/navigationRailFence"
         android:icon="@mipmap/ic_rail_foreground"
-        android:title="Rail Fence"/>
+        android:title="RSA"/>
     <item
         android:id="@+id/navigationSuperAlgo"
         android:icon="@mipmap/ic_super_foreground"
