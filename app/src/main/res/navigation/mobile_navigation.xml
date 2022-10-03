@@ -12,7 +12,7 @@
     <fragment
         android:id="@+id/navigationRailFence"
         android:name="com.kingtech.cryptography.fragment.RsaFragment"
-        android:label="Rail Fence"
+        android:label="RSA"
         tools:layout="@layout/fragment_rsa" />
     <fragment
         android:id="@+id/navigationSuperAlgo"
