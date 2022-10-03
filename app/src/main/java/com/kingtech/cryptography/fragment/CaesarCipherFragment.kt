@@ -1,4 +1,4 @@
-package com.kingtech.cryptography
+package com.kingtech.cryptography.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
