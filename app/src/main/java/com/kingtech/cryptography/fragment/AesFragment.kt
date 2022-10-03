@@ -9,14 +9,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import br.com.amorim.crypto.keys.AesKey
 import com.kingtech.cryptography.R
-import com.kingtech.cryptography.databinding.FragmentHashBinding
+import com.kingtech.cryptography.databinding.FragmentAesBinding
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 
 
-class HashFragment : Fragment() {
+class AesFragment : Fragment() {
 
-    private lateinit var binding: FragmentHashBinding
+    private lateinit var binding: FragmentAesBinding
 
     private val cipher = Cipher.getInstance(TRANSFORMATION_SYMMETRIC)
     private val aesKey = AesKey()
@@ -27,7 +27,7 @@ class HashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentHashBinding.inflate(layoutInflater, container, false)
+        binding = FragmentAesBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

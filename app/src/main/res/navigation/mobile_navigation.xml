@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_super_algorithm" />
     <fragment
         android:id="@+id/hashFragment"
-        android:name="com.kingtech.cryptography.fragment.HashFragment"
+        android:name="com.kingtech.cryptography.fragment.AesFragment"
         android:label="fragment_hash"
-        tools:layout="@layout/fragment_hash" />
+        tools:layout="@layout/fragment_aes" />
 </navigation>
