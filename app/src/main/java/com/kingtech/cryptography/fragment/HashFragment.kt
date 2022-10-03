@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import br.com.amorim.crypto.keys.AesKey
 import com.kingtech.cryptography.databinding.FragmentHashBinding
 import javax.crypto.Cipher
 import javax.crypto.SecretKeyFactory
@@ -18,9 +19,9 @@ class HashFragment : Fragment() {
 
     private lateinit var binding: FragmentHashBinding
 
-    private val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
-    private val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
-    private val iv = "bVQzNFNhRkQ1Njc4UUFaWA=="
+    private val cipher = Cipher.getInstance(TRANSFORMATION_SYMMETRIC)
+    private val aesKey = AesKey()
+    private var iv: ByteArray? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,54 +39,30 @@ class HashFragment : Fragment() {
 
 
         binding.btnEncrypt.setOnClickListener {
-            binding.tvEncrypted.text = encrypt(input).toString()
+            binding.tvEncrypted.text = encrypt(input)
         }
 
         binding.btnDecrypt.setOnClickListener {
-            binding.tvDecrypted.text = decrypt(encrypt(input).toString()).toString()
+            binding.tvDecrypted.text = decrypt(encrypt(input))
         }
     }
 
-    private fun encrypt(strToEncrypt: String) :  String?
-    {
-        try
-        {
-            val ivParameterSpec = IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))
-
-            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-            val spec =  PBEKeySpec(secretKey.toCharArray(), Base64.decode(salt, Base64.DEFAULT), 10000, 256)
-            val tmp = factory.generateSecret(spec)
-            val secretKey =  SecretKeySpec(tmp.encoded, "AES")
-
-            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec)
-            return Base64.encodeToString(cipher.doFinal(strToEncrypt.toByteArray(Charsets.UTF_8)), Base64.DEFAULT)
-        }
-        catch (e: Exception)
-        {
-            println("Error while encrypting: $e")
-        }
-        return null
+    private fun encrypt(value: String): String {
+        cipher.init(Cipher.ENCRYPT_MODE, aesKey.getAesKey())
+        val textToEncrypt = value.toByteArray()
+        val encryptedByteArray = cipher.doFinal(textToEncrypt)
+        iv = cipher.iv
+        return Base64.encodeToString(encryptedByteArray, Base64.DEFAULT)
     }
 
-    private fun decrypt(strToDecrypt : String) : String? {
-        try
-        {
+    private fun decrypt(value: String): String {
+        cipher.init(Cipher.DECRYPT_MODE, aesKey.getAesKey(), IvParameterSpec(iv))
+        val encryptedData = Base64.decode(value, Base64.DEFAULT)
+        val decoded = cipher.doFinal(encryptedData)
+        return String(decoded)
+    }
 
-            val ivParameterSpec =  IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))
-
-            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-            val spec =  PBEKeySpec(secretKey.toCharArray(), Base64.decode(salt, Base64.DEFAULT), 10000, 256)
-            val tmp = factory.generateSecret(spec)
-            val secretKey =  SecretKeySpec(tmp.encoded, "AES")
-
-            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
-            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParameterSpec)
-            return  String(cipher.doFinal(Base64.decode(strToDecrypt, Base64.DEFAULT)))
-        }
-        catch (e : Exception) {
-            println("Error while decrypting: $e")
-        }
-        return null
+    companion object {
+        private const val TRANSFORMATION_SYMMETRIC = "AES/CBC/PKCS7Padding"
     }
 }

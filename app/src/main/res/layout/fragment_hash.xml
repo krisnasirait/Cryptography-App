@@ -6,11 +6,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HashFragment">
 
+
+    <TextView
+        android:id="@+id/titleAES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="monospace"
+        android:text="AES Encryption"
+        android:layout_margin="10dp"
+        android:textColor="@color/green"
+        android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTextToEncrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Text to Encrypt"
+        app:layout_constraintTop_toBottomOf="@id/titleAES" />
+
     <EditText
         android:id="@+id/etInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTextToEncrypt"
         android:layout_margin="10dp"/>
 
 
@@ -23,25 +47,37 @@
         android:layout_margin="10dp"/>
 
     <TextView
-        android:id="@+id/tvEncrypted"
+        android:id="@+id/tvTextDecrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Text to Encrypt"
+        app:layout_constraintTop_toBottomOf="@id/btnEncrypt" />
+
+    <EditText
+        android:id="@+id/etEncrypted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnEncrypt"
+        app:layout_constraintTop_toBottomOf="@id/tvTextDecrypt"
         android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnDecrypt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/btnDecrypt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Decrypt"
-        app:layout_constraintTop_toBottomOf="@id/tvEncrypted"
+        app:layout_constraintTop_toBottomOf="@id/etEncrypted"
         android:layout_margin="10dp"/>
-
-    <TextView
-        android:id="@+id/tvDecrypted"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnDecrypt"
-        android:layout_margin="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
