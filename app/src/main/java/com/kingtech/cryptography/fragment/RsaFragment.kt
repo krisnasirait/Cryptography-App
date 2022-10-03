@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import br.com.amorim.crypto.crypto.RSACrypto
 import com.kingtech.cryptography.R
-import com.kingtech.cryptography.databinding.FragmentRailFenceCipherBinding
 import com.kingtech.cryptography.databinding.FragmentRsaBinding
 
 class RsaFragment : Fragment() {
