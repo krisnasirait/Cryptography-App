@@ -7,22 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import br.com.amorim.crypto.crypto.RSACrypto
-import br.com.amorim.crypto.keys.AesKey
 import com.kingtech.cryptography.R
-import com.kingtech.cryptography.databinding.FragmentCaesarCipherBinding
 import com.kingtech.cryptography.databinding.FragmentRailFenceCipherBinding
-import javax.crypto.Cipher
+import com.kingtech.cryptography.databinding.FragmentRsaBinding
 
-class RailFenceCipherFragment : Fragment() {
+class RsaFragment : Fragment() {
 
-    private lateinit var binding: FragmentRailFenceCipherBinding
+    private lateinit var binding: FragmentRsaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentRailFenceCipherBinding.inflate(layoutInflater, container, false)
+        binding = FragmentRsaBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
