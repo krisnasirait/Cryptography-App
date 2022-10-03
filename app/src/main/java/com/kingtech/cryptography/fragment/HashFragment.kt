@@ -5,14 +5,13 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import br.com.amorim.crypto.keys.AesKey
+import com.kingtech.cryptography.R
 import com.kingtech.cryptography.databinding.FragmentHashBinding
 import javax.crypto.Cipher
-import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.PBEKeySpec
-import javax.crypto.spec.SecretKeySpec
 
 
 class HashFragment : Fragment() {
@@ -35,15 +34,20 @@ class HashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val input = binding.etInput.text.toString()
-
+        val textToEncrypt = view.findViewById<TextView>(R.id.etInput)
+        val textToDecrypt = view.findViewById<TextView>(R.id.etEncrypted)
+        val decryptResult = view.findViewById<TextView>(R.id.tvResult)
 
         binding.btnEncrypt.setOnClickListener {
-            binding.tvEncrypted.text = encrypt(input)
+            encrypt(textToEncrypt.text.toString()).let {
+                textToDecrypt.text = it
+            }
         }
 
         binding.btnDecrypt.setOnClickListener {
-            binding.tvDecrypted.text = decrypt(encrypt(input))
+            decrypt(textToDecrypt.text.toString()).let {
+                decryptResult.text = it
+            }
         }
     }
 
