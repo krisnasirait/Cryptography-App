@@ -1,17 +1,16 @@
 package com.kingtech.cryptography.fragment
 
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kingtech.cryptography.databinding.FragmentHashBinding
-import org.bouncycastle.jce.provider.BouncyCastleProvider
-import java.io.UnsupportedEncodingException
-import java.security.InvalidKeyException
-import java.security.NoSuchAlgorithmException
-import java.security.Security
-import javax.crypto.*
+import javax.crypto.Cipher
+import javax.crypto.SecretKeyFactory
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 
 
@@ -19,12 +18,14 @@ class HashFragment : Fragment() {
 
     private lateinit var binding: FragmentHashBinding
 
-    private val secretKey = "662ede836988e52fb6d087d9d85605e0"
+    private val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
+    private val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
+    private val iv = "bVQzNFNhRkQ1Njc4UUFaWA=="
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentHashBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -33,99 +34,58 @@ class HashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var input = binding.etInput.text.toString()
+        val input = binding.etInput.text.toString()
 
 
         binding.btnEncrypt.setOnClickListener {
-            binding.tvEncrypted.text = encrypt(input, secretKey).toString()
+            binding.tvEncrypted.text = encrypt(input).toString()
         }
 
         binding.btnDecrypt.setOnClickListener {
-            binding.tvDecrypted.text = decryptWithAES(secretKey, binding.tvEncrypted.text.toString())
+            binding.tvDecrypted.text = decrypt(encrypt(input).toString()).toString()
         }
     }
 
-    private fun encrypt(strToEncrypt: String, secret_key: String): String? {
-        Security.addProvider(BouncyCastleProvider())
-        var keyBytes: ByteArray
+    private fun encrypt(strToEncrypt: String) :  String?
+    {
+        try
+        {
+            val ivParameterSpec = IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))
 
-        try {
-            keyBytes = secret_key.toByteArray(charset("UTF8"))
-            val skey = SecretKeySpec(keyBytes, "AES")
-            val input = strToEncrypt.toByteArray(charset("UTF8"))
+            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
+            val spec =  PBEKeySpec(secretKey.toCharArray(), Base64.decode(salt, Base64.DEFAULT), 10000, 256)
+            val tmp = factory.generateSecret(spec)
+            val secretKey =  SecretKeySpec(tmp.encoded, "AES")
 
-            synchronized(Cipher::class.java) {
-                val cipher = Cipher.getInstance("AES/ECB/PKCS7Padding")
-                cipher.init(Cipher.ENCRYPT_MODE, skey)
-
-                val cipherText = ByteArray(cipher.getOutputSize(input.size))
-                var ctLength = cipher.update(
-                    input, 0, input.size,
-                    cipherText, 0
-                )
-                ctLength += cipher.doFinal(cipherText, ctLength)
-                return String(
-                    org.bouncycastle.util.encoders.Base64.encode(cipherText)
-                )
-            }
-        } catch (uee: UnsupportedEncodingException) {
-            uee.printStackTrace()
-        } catch (ibse: IllegalBlockSizeException) {
-            ibse.printStackTrace()
-        } catch (bpe: BadPaddingException) {
-            bpe.printStackTrace()
-        } catch (ike: InvalidKeyException) {
-            ike.printStackTrace()
-        } catch (nspe: NoSuchPaddingException) {
-            nspe.printStackTrace()
-        } catch (nsae: NoSuchAlgorithmException) {
-            nsae.printStackTrace()
-        } catch (e: ShortBufferException) {
-            e.printStackTrace()
+            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec)
+            return Base64.encodeToString(cipher.doFinal(strToEncrypt.toByteArray(Charsets.UTF_8)), Base64.DEFAULT)
         }
-
+        catch (e: Exception)
+        {
+            println("Error while encrypting: $e")
+        }
         return null
     }
 
-    private fun decryptWithAES(key: String, strToDecrypt: String?): String? {
-        Security.addProvider(BouncyCastleProvider())
-        val keyBytes: ByteArray
+    private fun decrypt(strToDecrypt : String) : String? {
+        try
+        {
 
-        try {
-            keyBytes = key.toByteArray(charset("UTF8"))
-            val skey = SecretKeySpec(keyBytes, "AES")
-            val input = org.bouncycastle.util.encoders.Base64
-                .decode(strToDecrypt?.trim { it <= ' ' }?.toByteArray(charset("UTF8")))
+            val ivParameterSpec =  IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))
 
-            synchronized(Cipher::class.java) {
-                val cipher = Cipher.getInstance("AES/ECB/PKCS7Padding")
-                cipher.init(Cipher.DECRYPT_MODE, skey)
+            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
+            val spec =  PBEKeySpec(secretKey.toCharArray(), Base64.decode(salt, Base64.DEFAULT), 10000, 256)
+            val tmp = factory.generateSecret(spec)
+            val secretKey =  SecretKeySpec(tmp.encoded, "AES")
 
-                val plainText = ByteArray(cipher.getOutputSize(input.size))
-                var ptLength = cipher.update(input, 0, input.size, plainText, 0)
-                ptLength += cipher.doFinal(plainText, ptLength)
-                val decryptedString = String(plainText)
-                return decryptedString.trim { it <= ' ' }
-            }
-        } catch (uee: UnsupportedEncodingException) {
-            uee.printStackTrace()
-        } catch (ibse: IllegalBlockSizeException) {
-            ibse.printStackTrace()
-        } catch (bpe: BadPaddingException) {
-            bpe.printStackTrace()
-        } catch (ike: InvalidKeyException) {
-            ike.printStackTrace()
-        } catch (nspe: NoSuchPaddingException) {
-            nspe.printStackTrace()
-        } catch (nsae: NoSuchAlgorithmException) {
-            nsae.printStackTrace()
-        } catch (e: ShortBufferException) {
-            e.printStackTrace()
+            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParameterSpec)
+            return  String(cipher.doFinal(Base64.decode(strToDecrypt, Base64.DEFAULT)))
         }
-
+        catch (e : Exception) {
+            println("Error while decrypting: $e")
+        }
         return null
     }
-
-
-
 }
