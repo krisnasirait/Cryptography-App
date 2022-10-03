@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CaesarCipherFragment"
+    tools:context=".fragment.CaesarCipherFragment"
     android:layout_margin="10dp">
 
 

@@ -6,17 +6,17 @@
     app:startDestination="@id/navigationCaesar">
     <fragment
         android:id="@+id/navigationCaesar"
-        android:name="com.kingtech.cryptography.CaesarCipherFragment"
+        android:name="com.kingtech.cryptography.fragment.CaesarCipherFragment"
         android:label="Caesar"
         tools:layout="@layout/fragment_caesar_cipher" />
     <fragment
         android:id="@+id/navigationVignere"
-        android:name="com.kingtech.cryptography.VignereCipherFragment"
+        android:name="com.kingtech.cryptography.fragment.VignereCipherFragment"
         android:label="Vignere"
         tools:layout="@layout/fragment_vignere_cipher" />
     <fragment
         android:id="@+id/navigationRailFence"
-        android:name="com.kingtech.cryptography.RailFenceCipherFragment"
+        android:name="com.kingtech.cryptography.fragment.RailFenceCipherFragment"
         android:label="Rail Fence"
         tools:layout="@layout/fragment_rail_fence_cipher" />
     <fragment

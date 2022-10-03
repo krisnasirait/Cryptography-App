@@ -4,79 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".VignereCipherFragment"
-    android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    android:layout_margin="10dp">
+    tools:context=".fragment.VignereCipherFragment">
 
-    <TextView
-        android:id="@+id/titleAlgorithm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:typeface="monospace"
-        android:layout_marginTop="10dp"
-        android:text="Vigenere Cipher"
-        android:textColor="@color/cadet_blue"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/tvInputText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="6dp"
-        android:text="Input Text"
-        android:textColor="@color/blue"
-        android:textSize="25sp"
-        android:textStyle="italic|bold"
-        app:layout_constraintTop_toBottomOf="@id/titleAlgorithm"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <EditText
-        android:id="@+id/text_plain"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:typeface="serif"
-        android:gravity="start"
-        android:hint="Input Plain Text here"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine|textNoSuggestions"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/tvInputText"/>
-
-    <EditText
-        android:id="@+id/etKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Input key"
-        app:layout_constraintTop_toBottomOf="@id/text_plain"/>
-
-    <TextView
-        android:id="@+id/textEncrypted"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0.2"
-        android:typeface="serif"
-        android:inputType="textMultiLine|textNoSuggestions"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:ignore="TextViewEdits"
-        app:layout_constraintTop_toBottomOf="@id/etKey"/>
-
-    <Button
-        android:id="@+id/btnEncrypt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="56dp"
-        android:text="Encrypt"
-       app:layout_constraintTop_toBottomOf="@id/textEncrypted"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
