@@ -5,9 +5,9 @@
         android:title="Caesar"
         android:icon="@mipmap/ic_logo_foreground"/>
     <item
-        android:id="@+id/navigationVignere"
+        android:id="@+id/hashFragment"
         android:icon="@mipmap/ic_vignere_foreground"
-        android:title="Vignere"/>
+        android:title="Hash"/>
     <item
         android:id="@+id/navigationRailFence"
         android:icon="@mipmap/ic_rail_foreground"

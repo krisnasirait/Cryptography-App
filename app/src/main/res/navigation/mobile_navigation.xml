@@ -10,11 +10,6 @@
         android:label="Caesar"
         tools:layout="@layout/fragment_caesar_cipher" />
     <fragment
-        android:id="@+id/navigationVignere"
-        android:name="com.kingtech.cryptography.fragment.VignereCipherFragment"
-        android:label="Vignere"
-        tools:layout="@layout/fragment_vignere_cipher" />
-    <fragment
         android:id="@+id/navigationRailFence"
         android:name="com.kingtech.cryptography.fragment.RailFenceCipherFragment"
         android:label="Rail Fence"
@@ -24,4 +19,9 @@
         android:name="com.kingtech.cryptography.SuperAlgorithm"
         android:label="Super"
         tools:layout="@layout/fragment_super_algorithm" />
+    <fragment
+        android:id="@+id/hashFragment"
+        android:name="com.kingtech.cryptography.fragment.HashFragment"
+        android:label="fragment_hash"
+        tools:layout="@layout/fragment_hash" />
 </navigation>
