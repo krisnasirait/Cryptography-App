@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_rsa" />
     <fragment
         android:id="@+id/navigationSuperAlgo"
-        android:name="com.kingtech.cryptography.SuperAlgorithm"
+        android:name="com.kingtech.cryptography.fragment.SuperAlgorithmFragment"
         android:label="Super"
         tools:layout="@layout/fragment_super_algorithm" />
     <fragment
