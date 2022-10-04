@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import br.com.amorim.crypto.crypto.RSACrypto
 import com.kingtech.cryptography.R
 import com.kingtech.cryptography.databinding.FragmentRsaBinding
@@ -39,8 +40,12 @@ class RsaFragment : Fragment() {
         }
 
         binding.btnDecrypt.setOnClickListener {
-            rsaCrypto?.decrypt(textToDecrypt.text.toString()).let {
-                decryptResult.text = it
+            try {
+                rsaCrypto?.decrypt(textToDecrypt.text.toString()).let {
+                    decryptResult.text = it
+                }
+            } catch (error: Error) {
+                Toast.makeText(activity, "${error.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
