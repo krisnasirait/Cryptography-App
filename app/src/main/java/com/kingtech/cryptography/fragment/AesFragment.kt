@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import br.com.amorim.crypto.crypto.AESCrypto
 import com.kingtech.cryptography.R
 import com.kingtech.cryptography.databinding.FragmentAesBinding
+import java.io.IOException
 
 
 class AesFragment : Fragment() {
@@ -45,7 +46,7 @@ class AesFragment : Fragment() {
                 aesCrypto.decrypt(textToDecrypt.text.toString()).let {
                     decryptResult.text = it
                 }
-            } catch (error: Error) {
+            } catch (error: IOException) {
                 Toast.makeText(activity, "${error.message}", Toast.LENGTH_SHORT).show()
             }
         }
