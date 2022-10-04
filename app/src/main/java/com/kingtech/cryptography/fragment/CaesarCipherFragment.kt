@@ -43,7 +43,7 @@ class CaesarCipherFragment : Fragment() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-                binding.textCipher.text = s
+                binding.textCipher.setText(s)
                 transText(binding.textPlain.text.toString(), key)
             }
         })
@@ -76,7 +76,7 @@ class CaesarCipherFragment : Fragment() {
             }
             output += charIn
         }
-        binding.textCipher.text = output
+        binding.textCipher.setText(output)
         binding.textCipher.paintFlags = 0
     }
 
